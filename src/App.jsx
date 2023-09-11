@@ -1,12 +1,20 @@
-import jt from "./assets/jt.png";
+import "./App.css";
+
+import Landing from "./pages/Landing";
+import ErrorPage from "./pages/error-page";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const App = () => {
-  return (
-    <div className="flex flex-col justify-center items-center w-full h-screen">
-      <img src={jt} className="rounded-full mb-10" />
-      <h1 className="text-4xl font-bold text-gray-800">Milind Jhatu hai!!</h1>
-    </div>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Landing />,
+      errorElement: <ErrorPage />,
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 };
 
 export default App;
