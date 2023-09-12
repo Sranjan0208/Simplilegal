@@ -1,0 +1,13 @@
+#heading {
+  font-family: "League Gothic", sans-serif;
+}
+
+#content {
+  font-family: "Archivo", sans-serif;
+}
+
+#description-background {
+  background-image: radial-gradient(#66667d 2px, transparent 2px);
+  background-size: 32px 32px;
+  background-color: #33415c;
+}
