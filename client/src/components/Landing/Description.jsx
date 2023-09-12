@@ -1,7 +1,7 @@
 const Description = () => {
   return (
     <section className="w-full h-[90%] " id="description-background">
-      <div className="flex flex-col justify-center w-[50%] h-[90%] p-20">
+      <div className="flex flex-col justify-center w-[60%] h-[90%] p-20">
         <h1 className="pl-20 pb-10 text-7xl text-[#FFFFFF]" id="heading">
           Revolutionary AI Legal Tech
         </h1>
