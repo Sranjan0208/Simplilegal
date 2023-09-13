@@ -37,7 +37,7 @@ const FileUpload = () => {
         height="100%"
         width="100%"
       /> */}
-      <PDFViewer pdfUrl={`http://localhost:8000/upload/` + pdfUrl} />
+      {/* <PDFViewer pdfUrl={`http://localhost:8000/upload/` + pdfUrl} /> */}
     </div>
   );
 };
