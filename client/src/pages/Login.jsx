@@ -121,14 +121,14 @@ const Login = () => {
                   type="button"
                   className="transition duration-200 border border-gray-200 text-gray-500 w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center flex justify-center items-center"
                 >
-                  <FcGoogle classNameName="mr-3" />
+                  <FcGoogle className="mr-3" />
                   Google
                 </button>
                 <button
                   type="button"
                   className="transition duration-200 border border-gray-200 text-black w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center flex justify-center items-center"
                 >
-                  <FaApple classNameName="mr-3" />
+                  <FaApple className="mr-3" />
                   Apple
                 </button>
               </div>
