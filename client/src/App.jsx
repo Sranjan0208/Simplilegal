@@ -7,9 +7,12 @@ import Dashboard from "./pages/Dashboard";
 import Generator from "./pages/Generator";
 
 import Landing from "./pages/Landing";
+import Lawyer from "./pages/Lawyer";
+import LegalDoc from "./pages/LegalDoc";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ErrorPage from "./pages/error-page";
+
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -56,6 +59,14 @@ const App = () => {
     {
       path: "/generator",
       element: <Generator />,
+    },
+    {
+      path: "/legal-doc",
+      element: <LegalDoc />,
+    },
+    {
+      path: "/lawyer",
+      element: <Lawyer />,
     },
   ]);
 

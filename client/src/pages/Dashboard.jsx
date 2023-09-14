@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
-import Nav from "../components/Dashboard/Navbar";
+import Nav from "../components/Navbar";
 import HeroSection from "../components/Dashboard/HeroSection";
+import Forum from "../components/Forum";
+import Docs from "../components/Dashboard/Docs";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -34,7 +36,7 @@ const Dashboard = () => {
   return (
     <>
       <Nav />
-      <HeroSection />
+      <Docs  />
     </>
   );
 };
