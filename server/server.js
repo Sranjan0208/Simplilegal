@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const multer = require("multer");
 
+const Img = require("./models/ImgModel");
 const Pdf = require("./models/PdfModel");
 
 require("dotenv").config();
@@ -59,6 +60,41 @@ app.get("/getpdf", (req, res) => {
   Pdf.find()
     .then((result) => res.json(result))
     .catch((err) => console.log(err));
+});
+
+app.post("/imgupload", upload.single("file"), (req, res) => {
+  console.log(req.file);
+  Img.create({ imageURL: req.file.filename })
+    .then((result) => res.json(result))
+    .catch((err) => console.log(err));
+});
+
+app.get("/getimage", (req, res) => {
+  Img.find()
+    .then((result) => res.json(result))
+    .catch((err) => console.log(err));
+});
+
+// Form Data
+
+const FormEntry = mongoose.model("FormEntry", {
+  name: String,
+  phoneNumber: String,
+  dob: String,
+  address: String,
+  problem: String,
+  caseAgainst: String,
+  additionalInfo: String,
+});
+
+app.post("/form", async (req, res) => {
+  try {
+    const formEntry = new FormEntry(req.body);
+    await formEntry.save();
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
 });
 
 app.use(cookieParser());

@@ -1,7 +1,10 @@
 import "./App.css";
+import ImgUpload from "./components/Img/ImgUpload";
+import ImgViewer from "./components/Img/ImgViewer";
 import FileUpload from "./components/PDF/FileUpload";
 import PDFViewer from "./components/PDF/PDFViewer";
 import Dashboard from "./pages/Dashboard";
+import Generator from "./pages/Generator";
 
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
@@ -38,8 +41,21 @@ const App = () => {
       errorElement: <ErrorPage />,
     },
     {
+      path: "/imgupload",
+      element: <ImgUpload />,
+      errorElement: <ErrorPage />,
+    },
+    {
       path: "/view/:id",
       element: <PDFViewer />,
+    },
+    {
+      path: "/view/:id",
+      element: <ImgViewer />,
+    },
+    {
+      path: "/generator",
+      element: <Generator />,
     },
   ]);
 
