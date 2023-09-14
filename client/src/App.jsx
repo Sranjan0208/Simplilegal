@@ -6,6 +6,7 @@ import PDFViewer from "./components/PDF/PDFViewer";
 import Dashboard from "./pages/Dashboard";
 
 import Landing from "./pages/Landing";
+import Lawyer from "./pages/Lawyer";
 import LegalDoc from "./pages/LegalDoc";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -57,6 +58,10 @@ const App = () => {
     {
       path: "/legal-doc",
       element: <LegalDoc />,
+    },
+    {
+      path: "/lawyer",
+      element: <Lawyer />,
     },
   ]);
 

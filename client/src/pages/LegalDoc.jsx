@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../components/Dashboard/Navbar";
+import Nav from "../components/Navbar";
 
 function LegalDoc(props) {
   return (
