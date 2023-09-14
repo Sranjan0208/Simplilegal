@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { Navbar } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,12 +25,12 @@ function Nav() {
                     Dashboard
                   </a>
 
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Button2
-                  </a>
+                  <Link
+                  to="/generator"
+                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                >
+                  Form Generator
+                </Link>
 
                   <a
                     href="/lawyer"
@@ -120,12 +121,12 @@ function Nav() {
                   Dashboard
                 </a>
 
-                <a
-                  href="#"
+                <Link
+                  to="generator"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
-                  Button2
-                </a>
+                  Form Generator
+                </Link>
 
                 <a
                   href="/lawyer"
