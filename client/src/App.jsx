@@ -4,6 +4,7 @@ import ImgViewer from "./components/Img/ImgViewer";
 import FileUpload from "./components/PDF/FileUpload";
 import PDFViewer from "./components/PDF/PDFViewer";
 import Dashboard from "./pages/Dashboard";
+import Generator from "./pages/Generator";
 
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
@@ -51,6 +52,10 @@ const App = () => {
     {
       path: "/view/:id",
       element: <ImgViewer />,
+    },
+    {
+      path: "/generator",
+      element: <Generator />,
     },
   ]);
 
