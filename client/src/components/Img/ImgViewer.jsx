@@ -1,6 +1,6 @@
 import React from "react";
 
-const ImgViewer = ({ imageUrl }) => {
+const ImgViewer = (imageUrl) => {
   return (
     <div style={{ width: "600px" }}>
       <img

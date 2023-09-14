@@ -75,6 +75,28 @@ app.get("/getimage", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+// Form Data
+
+const FormEntry = mongoose.model("FormEntry", {
+  name: String,
+  phoneNumber: String,
+  dob: String,
+  address: String,
+  problem: String,
+  caseAgainst: String,
+  additionalInfo: String,
+});
+
+app.post("/form", async (req, res) => {
+  try {
+    const formEntry = new FormEntry(req.body);
+    await formEntry.save();
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
 app.use(cookieParser());
 
 app.use("/", require("./routes/auth.routes"));
