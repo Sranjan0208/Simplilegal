@@ -1,4 +1,6 @@
 import "./App.css";
+import ImgUpload from "./components/Img/ImgUpload";
+import ImgViewer from "./components/Img/ImgViewer";
 import FileUpload from "./components/PDF/FileUpload";
 import PDFViewer from "./components/PDF/PDFViewer";
 import Dashboard from "./pages/Dashboard";
@@ -38,8 +40,17 @@ const App = () => {
       errorElement: <ErrorPage />,
     },
     {
+      path: "/imgupload",
+      element: <ImgUpload />,
+      errorElement: <ErrorPage />,
+    },
+    {
       path: "/view/:id",
       element: <PDFViewer />,
+    },
+    {
+      path: "/view/:id",
+      element: <ImgViewer />,
     },
   ]);
 

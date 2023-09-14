@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const multer = require("multer");
 
+const Img = require("./models/ImgModel");
 const Pdf = require("./models/PdfModel");
 
 require("dotenv").config();
@@ -57,6 +58,19 @@ app.post("/upload", upload.single("file"), (req, res) => {
 
 app.get("/getpdf", (req, res) => {
   Pdf.find()
+    .then((result) => res.json(result))
+    .catch((err) => console.log(err));
+});
+
+app.post("/imgupload", upload.single("file"), (req, res) => {
+  console.log(req.file);
+  Img.create({ imageURL: req.file.filename })
+    .then((result) => res.json(result))
+    .catch((err) => console.log(err));
+});
+
+app.get("/getimage", (req, res) => {
+  Img.find()
     .then((result) => res.json(result))
     .catch((err) => console.log(err));
 });
