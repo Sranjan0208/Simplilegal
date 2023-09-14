@@ -6,9 +6,11 @@ import PDFViewer from "./components/PDF/PDFViewer";
 import Dashboard from "./pages/Dashboard";
 
 import Landing from "./pages/Landing";
+import LegalDoc from "./pages/LegalDoc";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ErrorPage from "./pages/error-page";
+
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -51,6 +53,10 @@ const App = () => {
     {
       path: "/view/:id",
       element: <ImgViewer />,
+    },
+    {
+      path: "/legal-doc",
+      element: <LegalDoc />,
     },
   ]);
 
