@@ -33,6 +33,8 @@ const Form = () => {
     });
   };
 
+ 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -97,6 +99,24 @@ const Form = () => {
     }
 
     setErrors(newErrors);
+  };
+
+  const generatePromptString = (formData) => {
+    const {
+      name,
+      phoneNumber,
+      dob,
+      address,
+      problem,
+      caseAgainst,
+      additionalInfo,
+    } = formData;
+
+    // Constructing the prompt string
+    const promptString = `My name is ${name}. My phone number is ${phoneNumber}. My date of birth is ${dob}. My address is ${address}. My problem is ${problem}. My case against is ${caseAgainst}. Additional information: ${additionalInfo}. Based on this draft a body for the legal notice.`;
+
+    console.log(promptString);
+    return promptString;
   };
 
   return (
