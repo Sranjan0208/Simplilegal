@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Nav from "../Navbar";
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -32,6 +33,8 @@ const Form = () => {
       [name]: "",
     });
   };
+
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -99,10 +102,30 @@ const Form = () => {
     setErrors(newErrors);
   };
 
+  const generatePromptString = (formData) => {
+    const {
+      name,
+      phoneNumber,
+      dob,
+      address,
+      problem,
+      caseAgainst,
+      additionalInfo,
+    } = formData;
+
+    // Constructing the prompt string
+    const promptString = `You are a Lawyer. You do not respond as 'User' or pretend to be 'User'. You only respond once as 'Lawyer'.My name is ${name}. My phone number is ${phoneNumber}. My date of birth is ${dob}. My address is ${address}. My case is related to ${problem}. My case is against ${caseAgainst}. Additional information: ${additionalInfo}. Based on this draft a body for the legal notice.`;
+
+    console.log(promptString);
+    return promptString;
+  };
+
   return (
+    <>
+    <Nav />
     <div className="min-h-screen bg-gray-100 p-0 sm:p-12">
       <div className="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
-        <h1 className="text-2xl font-bold mb-8">Legal Form</h1>
+        <h1 clamossName="text-2xl font-bold mb-8">Legal Form</h1>
         <form id="form" noValidate onSubmit={handleSubmit}>
           <div className="relative z-0 w-full mb-5">
             <input
@@ -223,7 +246,7 @@ const Form = () => {
           <div className="relative z-0 w-full mb-5">
             <textarea
               name="additionalInfo"
-              placeholder="Additional Information about case (Optional)"
+              placeholder="Relevant Information about case "
               value={formData.additionalInfo}
               onChange={handleChange}
               className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 border-gray-200"
@@ -239,6 +262,7 @@ const Form = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 
