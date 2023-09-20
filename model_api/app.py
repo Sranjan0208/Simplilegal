@@ -3,7 +3,10 @@ from flask_cors import CORS
 import os
 import replicate
 
-os.environ["REPLICATE_API_TOKEN"] ="r8_W3WU72Ju3eiKoRsxKfuOSk6Ex0e9HcH0yviIS"
+from dotenv import load_dotenv
+load_dotenv()
+
+os.environ["REPLICATE_API_TOKEN"] =os.getenv("API_KEY")
 
 app = Flask(__name__)
 CORS(app)
