@@ -13,7 +13,6 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ErrorPage from "./pages/error-page";
 
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const App = () => {

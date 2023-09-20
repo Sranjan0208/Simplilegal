@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Nav from "../Navbar";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     phoneNumber: "",
@@ -22,6 +24,8 @@ const Form = () => {
     caseAgainst: "",
   });
 
+  const [generatedResponse, setGeneratedResponse] = useState("");
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -32,6 +36,46 @@ const Form = () => {
       ...errors,
       [name]: "",
     });
+  };
+
+  const generatePromptString = () => {
+    const {
+      name,
+      phoneNumber,
+      dob,
+      address,
+      problem,
+      caseAgainst,
+      additionalInfo,
+    } = formData;
+
+    // Constructing the prompt string
+    const promptString = `You are a Lawyer. You do not respond as 'User' or pretend to be 'User'. You only respond once as 'Lawyer'.My name is ${name}. My phone number is ${phoneNumber}. My date of birth is ${dob}. My address is ${address}. My case is related to ${problem}. My case is against ${caseAgainst}. Relevant information: ${additionalInfo}. Give a legal draft for this case from ${name}'s side in a proper format?`;
+
+    console.log(promptString);
+    return promptString;
+  };
+
+  const sendToModelAPI = async (promptString) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/get_llama_response",
+        {
+          promptString: promptString,
+        }
+      );
+
+      if (response.data.success) {
+        console.log("Response from model:", response.data.response);
+        // Do something with the response from the model
+        // setGeneratedResponse(response.data.response);
+        navigate(`/legal-doc?response=${response.data.response}`);
+      } else {
+        console.error(response.data.error);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -89,6 +133,10 @@ const Form = () => {
 
         if (response.data.success) {
           console.log("Form submitted successfully!");
+          // After the form is submitted, generate the prompt string
+          const promptString = generatePromptString(formData);
+          // Send the promptString to the model API
+          sendToModelAPI(promptString);
         } else {
           console.error(response.data.error);
         }
@@ -231,7 +279,7 @@ const Form = () => {
 
             <div className="relative z-0 w-full mb-5">
               <textarea
-                name="relevantInfo"
+                name="additionalInfo"
                 placeholder="Relevant Information about case "
                 value={formData.additionalInfo}
                 onChange={handleChange}
